@@ -148,13 +148,13 @@ summary AS (
         END AS archiver_has_recent_errors,
         CASE
             WHEN wrs.max_replay_lag_bytes IS NOT NULL
-                 AND wrs.max_replay_lag_bytes > 1024 * 1024 * 1024
+                 AND wrs.max_replay_lag_bytes > 1024::bigint * 1024 * 1024
                 THEN TRUE
             ELSE FALSE
         END AS replication_lag_risk,
         CASE
             WHEN wss.max_retained_wal_bytes IS NOT NULL
-                 AND wss.max_retained_wal_bytes > 5 * 1024 * 1024 * 1024
+                 AND wss.max_retained_wal_bytes > 5::bigint * 1024 * 1024 * 1024
                 THEN TRUE
             ELSE FALSE
         END AS slot_retention_risk

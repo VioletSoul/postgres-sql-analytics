@@ -100,8 +100,10 @@ SELECT
     CASE
     WHEN (qb.shared_blks_hit + qb.shared_blks_read) > 0
     THEN round(
-    100.0 * qb.shared_blks_hit::numeric
-    / (qb.shared_blks_hit + qb.shared_blks_read),
+    (
+    100.0 * qb.shared_blks_hit
+    / (qb.shared_blks_hit + qb.shared_blks_read)
+    )::numeric,
     2
     )
     ELSE NULL
@@ -109,49 +111,49 @@ SELECT
 
     CASE
     WHEN qb.calls > 0
-    THEN round(qb.total_exec_time::numeric / qb.calls, 4)
+    THEN round((qb.total_exec_time / qb.calls)::numeric, 4)
     ELSE NULL
     END AS avg_exec_time_ms,
 
     CASE
     WHEN qb.calls > 0
-    THEN round(qb.total_plan_time::numeric / qb.calls, 4)
+    THEN round((qb.total_plan_time / qb.calls)::numeric, 4)
     ELSE NULL
     END AS avg_plan_time_ms,
 
     CASE
     WHEN qb.calls > 0
-    THEN round(qb.rows::numeric / qb.calls, 4)
+    THEN round((qb.rows::numeric / qb.calls), 4)
     ELSE NULL
     END AS avg_rows_per_call,
 
     CASE
     WHEN qb.calls > 0
-    THEN round(qb.shared_blks_read::numeric / qb.calls, 4)
+    THEN round((qb.shared_blks_read::numeric / qb.calls), 4)
     ELSE NULL
     END AS avg_shared_reads_per_call,
 
     CASE
     WHEN qb.calls > 0
-    THEN round(qb.temp_blks_written::numeric / qb.calls, 4)
+    THEN round((qb.temp_blks_written::numeric / qb.calls), 4)
     ELSE NULL
     END AS avg_temp_written_per_call,
 
     CASE
     WHEN qb.total_exec_time > 0
-    THEN round(100.0 * qb.total_plan_time::numeric / qb.total_exec_time, 2)
+    THEN round((100.0 * qb.total_plan_time / qb.total_exec_time)::numeric, 2)
     ELSE NULL
     END AS planning_to_execution_percent,
 
     CASE
     WHEN qb.total_exec_time > 0
-    THEN round(100.0 * qb.blk_read_time::numeric / qb.total_exec_time, 2)
+    THEN round((100.0 * qb.blk_read_time / qb.total_exec_time)::numeric, 2)
     ELSE NULL
     END AS read_io_time_percent,
 
     CASE
     WHEN qb.total_exec_time > 0
-    THEN round(100.0 * qb.blk_write_time::numeric / qb.total_exec_time, 2)
+    THEN round((100.0 * qb.blk_write_time / qb.total_exec_time)::numeric, 2)
     ELSE NULL
     END AS write_io_time_percent,
 

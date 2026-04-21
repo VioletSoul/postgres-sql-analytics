@@ -1,3 +1,14 @@
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
+![SQL](https://img.shields.io/badge/Language-SQL-blue)
+![Scope](https://img.shields.io/badge/Scope-schema-success)
+![Focus](https://img.shields.io/badge/Focus-tables%20%26%20indexes-orange)
+![Diagnostics](https://img.shields.io/badge/Diagnostics-bloat%20%7C%20locks%20%7C%20stats-critical)
+
+![Repo Size](https://img.shields.io/github/repo-size/VioletSoul/postgres-sql-analytics)
+![Code Size](https://img.shields.io/github/languages/code-size/VioletSoul/postgres-sql-analytics)
+[![Stars](https://img.shields.io/github/stars/VioletSoul/postgres-sql-analytics.svg?style=social)](https://github.com/VioletSoul/dspc-diagnostics)
+[![Last Commit](https://img.shields.io/github/last-commit/VioletSoul/postgres-sql-analytics.svg)](https://github.com/VioletSoul/dspc-diagnostics/commits/main)
+
 ## Обзор
 
 Запрос предназначен для получения расширенной статистики и диагностики по таблицам и индексам схемы `dspc` в PostgreSQL.  
